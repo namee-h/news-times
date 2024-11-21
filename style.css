@@ -1,33 +1,170 @@
-.head-line{
-    margin-top: 1em; 
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.title {
+    margin-top: 1em;
     display: flex;
     justify-content: center;
 }
-.head-line svg {
-    width: 480px;
+.title svg{
+    width: 430px;
 }
+.container {
+    display: contents;
+    
+}
+nav {
+    display: flex;
+    position: relative;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
 .menus{
-    margin-top: 1em; 
+    margin-top: 1em;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     border-top: 1px solid #ebebeb;
     border-bottom: 4px double black;
+    
 }
-.menus button {
-    border: none;
-    background:none;
+.menus button{
+    border: none;   
+    background: none;
     margin: 5px;
 }
 .menus button:hover{
     background-color: beige;
 }
-.new-img-size{
+.news-img-size{
     max-width: 100%;
     max-height: 250px;
 }
-.news{
+.news-list {
     border-bottom: 2px solid black;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: 1em 5px;
+}
+#menu-board{
+    margin-left: 0;
+    max-width: 200px;
+    display: flex;
+    position: relative;
+    background-color: none;
+}
+nav em{
+    position: absolute;
+    padding: 0;
+    left: -310px;
+    transition: 0.5s;
+}
+.menu-box{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    min-height: 100vh;
+    justify-content: center;
+    transition: 0.5s;
+    position: relative;
+    margin-top: 0;
+    background-color: bisque;
+    transition: 0.5s;
+}
+.x-icon{
+    position: absolute;
+    top: 1em;
+    left: 80%;
+    cursor: pointer;
+}
+.menu-box button{
+    border: none;
+    background: none;
+    padding: 1em 0px;
+}
+.bar-icon{
+    display: none;
+    position: absolute;
+    top: 1em;
+    
+    cursor: pointer;
+}
+.search-area{
+    position: absolute;
+    left: 1em;
+}
+.search-box{
+    display: flex;
+    margin-top: 1em;
+    position: relative;
+}
+.search-box i{
+    cursor: pointer;
+    margin-right: 1em;
+    
+}
+.search-box > span{
+    display: none;
+    margin-top: -0.5em;
+    position: absolute;
+    left: 1.5em;
+    width: 400px;
+}
+#input-box{
+    border: 1px solid #ebebeb;
+}
+#input-box:focus{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(25, 135, 84) ;
+    transition: 0.2s;
+}
+.btn-outline-success{
+    padding: 1px 4px;
+    position: absolute;
+    left: 190px;
+    background-color: rgb(25, 135, 84);
+    color: white;
+}
+.btn-outline-success:hover{
+    background-color: white;
+    color: rgb(25, 135, 84);
+}
+.display-none{
+    display: none;
+}
+.pagination-nav{
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    --bs-pagination-color: rgb(25, 135, 84);
+    --bs-pagination-hover-color:rgb(25, 135, 84);
+    --bs-pagination-focus-color:rgb(25, 135, 84);
+    --bs-pagination-active-bg:rgb(25, 135, 84);
+    --bs-pagination-active-border-color:rgb(25, 135, 84);
+    
+}
+
+@media screen and (max-width:600px){
+    .bar-icon{
+        display : block;
+        position: absolute;
+        top: 1em;
+        left: 0.5em;
+    }
+    .menus{
+        display: none;
+    }
+    .title svg{
+        width: 260px;
+        margin-bottom: 1em;
+    }
+    .search-area{
+        position: absolute;
+        left: 2em;
+    }
+   
 }
