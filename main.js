@@ -12,12 +12,15 @@ let menus2 = document.querySelectorAll(".menu-box button");
 menus2.forEach((menu) =>
   menu.addEventListener("click", (e) => getNewsByCategory(e))
 );
-url = new URL(`https://study-website-be-bbb1539aa813.herokuapp.com/`);
 
 let totalResults = 0;
 let page = 1;
 const pageSize = 10;
 const groupSize = 5;
+
+url = new URL(
+  `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?page=${page}&pageSize=${pageSize}`
+);
 
 userInput.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
@@ -52,7 +55,7 @@ const getNews = async () => {
 
 const getLatestNews = async () => {
   url = new URL(
-    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines`
   );
 
   getNews();
