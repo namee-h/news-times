@@ -12,15 +12,12 @@ let menus2 = document.querySelectorAll(".menu-box button");
 menus2.forEach((menu) =>
   menu.addEventListener("click", (e) => getNewsByCategory(e))
 );
-
+// let url = new URL(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
+let url = new URL(`https://study-website-be-bbb1539aa813.herokuapp.com/`);
 let totalResults = 0;
 let page = 1;
 const pageSize = 10;
 const groupSize = 5;
-
-url = new URL(
-  `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?page=${page}&pageSize=${pageSize}`
-);
 
 userInput.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
@@ -54,15 +51,20 @@ const getNews = async () => {
 };
 
 const getLatestNews = async () => {
+  //   url = new URL(
+  //     `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
+  //   );
   url = new URL(
-    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr`
   );
-
   getNews();
 };
 
 const getNewsByCategory = async (e) => {
   let category = e.target.textContent.toLowerCase();
+  //   url = new URL(
+  //     `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
+  //   );
   url = new URL(
     `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?category=${category}`
   );
@@ -72,8 +74,11 @@ const getNewsByCategory = async (e) => {
 
 const getNewsKeyword = async () => {
   let Keyword = userInput.value;
+  //   url = new URL(
+  //     `https://newsapi.org/v2/top-headlines?country=us&q=${Keyword}&apiKey=${API_KEY}`
+  //   );
   url = new URL(
-    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?&q=${Keyword}`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?q=${Keyword}`
   );
   userInput.value = "";
   getNews();
@@ -156,8 +161,8 @@ const paginationRender = () => {
     paginationHTML += `<li class="page-item ${
       i === page ? "active" : ""
     }" onclick="moveToPage(${i})">
-                                <a href="#" class="page-link" >${i}</a>
-                            </li>`;
+                            <a href="#" class="page-link" >${i}</a>
+                        </li>`;
   }
   paginationHTML += `<li class="page-item ${
     page === totalPage ? "display-none" : ""
