@@ -22,7 +22,6 @@ main {
     flex-direction: column;
     padding: 1em;
 }
-
 .menus{
     margin-top: 1em;
     display: flex;
