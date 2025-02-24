@@ -12,9 +12,7 @@ let menus2 = document.querySelectorAll(".menu-box button");
 menus2.forEach((menu) =>
   menu.addEventListener("click", (e) => getNewsByCategory(e))
 );
-url = new URL(
-  `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&pageSize=10`
-);
+url = new URL(`https://study-website-be-bbb1539aa813.herokuapp.com/`);
 
 let totalResults = 0;
 let page = 1;
