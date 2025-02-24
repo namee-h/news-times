@@ -1,4 +1,4 @@
-const API_KEY = `9daa88131d05423c8d8ac93e35a350c2`;
+// const API_KEY = `9daa88131d05423c8d8ac93e35a350c2`;
 let sideBar = document.querySelector(".container section em");
 let searchToggle = false;
 let searchBox = document.querySelector(".search-box span");
@@ -12,9 +12,10 @@ let menus2 = document.querySelectorAll(".menu-box button");
 menus2.forEach((menu) =>
   menu.addEventListener("click", (e) => getNewsByCategory(e))
 );
-let url = new URL(
-  `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
+url = new URL(
+  `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&pageSize=10`
 );
+
 let totalResults = 0;
 let page = 1;
 const pageSize = 10;
@@ -53,15 +54,16 @@ const getNews = async () => {
 
 const getLatestNews = async () => {
   url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr`
   );
+
   getNews();
 };
 
 const getNewsByCategory = async (e) => {
   let category = e.target.textContent.toLowerCase();
   url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&category=${category}`
   );
   closeMenu();
   getNews();
@@ -70,7 +72,7 @@ const getNewsByCategory = async (e) => {
 const getNewsKeyword = async () => {
   let Keyword = userInput.value;
   url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=us&q=${Keyword}&apiKey=${API_KEY}`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&q=${Keyword}`
   );
   userInput.value = "";
   getNews();
