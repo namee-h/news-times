@@ -52,7 +52,7 @@ const getNews = async () => {
 
 const getLatestNews = async () => {
   url = new URL(
-    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?`
   );
 
   getNews();
@@ -61,7 +61,7 @@ const getLatestNews = async () => {
 const getNewsByCategory = async (e) => {
   let category = e.target.textContent.toLowerCase();
   url = new URL(
-    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&category=${category}`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?category=${category}`
   );
   closeMenu();
   getNews();
@@ -70,7 +70,7 @@ const getNewsByCategory = async (e) => {
 const getNewsKeyword = async () => {
   let Keyword = userInput.value;
   url = new URL(
-    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&q=${Keyword}`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?&q=${Keyword}`
   );
   userInput.value = "";
   getNews();
