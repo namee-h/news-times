@@ -93,9 +93,15 @@ const textLimit = (text, limit) => {
 const render = () => {
   let newsHTML = newsList
     .map((news) => {
+      const newsTitle = news.title ? news.title : "제목 없음";
       const urlImg = news.urlToImage
         ? news.urlToImage
         : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
+      const newsSource = news.source.name ? news.source.name : "출처없음";
+
+      const momentTime = news.publishedAt
+        ? moment(news.publishedAt).fromNow()
+        : "날짜없음";
 
       return `<div class="row news-list">
                 <div class="col-lg-4">
@@ -104,19 +110,11 @@ const render = () => {
 
                 </div>
                 <div class="col-lg-8">
-                  <h2>${news.title == "[Removed]" ? "삭제됨" : news.title}</h2>
+                  <h2>${newsTitle}</h2>
                   <p>${textLimit(news.description, 200)}
                   </p>
                   <div>
-                    ${
-                      news.source.name == "[Removed]"
-                        ? "삭제됨"
-                        : news.source.name
-                    } * ${
-        news.source.name == "[Removed]"
-          ? moment(news.publishedAt).fromNow()
-          : moment(news.publishedAt).fromNow()
-      }
+                    ${newsSource} * ${momentTime}
                   </div>
                 </div>
               </div>`;
