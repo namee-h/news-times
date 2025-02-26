@@ -40,8 +40,11 @@ main {
     background-color: beige;
 }
 .news-img-size{
-    max-width: 100%;
-    max-height: 250px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    max-height: 250px
+    
 }
 .news-list {
     border-bottom: 2px solid black;

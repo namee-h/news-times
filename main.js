@@ -85,41 +85,42 @@ const getNewsKeyword = async () => {
   userInput.value = "";
   getNews();
 };
+const textLimit = (text, limit) => {
+  if (!text) return "내용없음";
+  return text.length > limit ? text.substring(0, limit) + "..." : text;
+};
 
 const render = () => {
   let newsHTML = newsList
-    .map(
-      (news) => `
-        <div class="row news-list">
-            <div class="col-lg-4">
-              <img class="news-img-size" src="${
-                news.urlToImage ||
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png"
-              }"/>
-            </div>
-            <div class="col-lg-8">
-              <h2>${news.title == "[Removed]" ? "삭제됨" : news.title}</h2>
-              <p>
-                ${
-                  news.description == null
-                    ? "내용없음"
-                    : news.description == "[Removed]"
-                    ? "삭제됨"
-                    : news.description
-                }
-              </p>
-              <div>
-                ${
-                  news.source.name == "[Removed]" ? "삭제됨" : news.source.name
-                } * ${
+    .map((news) => {
+      const urlImg = news.urlToImage
+        ? news.urlToImage
+        : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
+
+      return `<div class="row news-list">
+                <div class="col-lg-4">
+                  <img class="news-img-size" src="${urlImg}"
+                  onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';"/>
+
+                </div>
+                <div class="col-lg-8">
+                  <h2>${news.title == "[Removed]" ? "삭제됨" : news.title}</h2>
+                  <p>${textLimit(news.description, 200)}
+                  </p>
+                  <div>
+                    ${
+                      news.source.name == "[Removed]"
+                        ? "삭제됨"
+                        : news.source.name
+                    } * ${
         news.source.name == "[Removed]"
           ? moment(news.publishedAt).fromNow()
-          : moment(news.publishedAt).format("L")
+          : moment(news.publishedAt).fromNow()
       }
-              </div>
-            </div>
-          </div>`
-    )
+                  </div>
+                </div>
+              </div>`;
+    })
     .join("");
 
   document.getElementById("news-board").innerHTML = newsHTML;
