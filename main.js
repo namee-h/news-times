@@ -75,12 +75,12 @@ const getNewsByCategory = async (e) => {
 };
 
 const getNewsKeyword = async () => {
-  let Keyword = userInput.value;
+  let keyword = userInput.value;
   //   url = new URL(
   //     `https://newsapi.org/v2/top-headlines?country=us&q=${Keyword}&apiKey=${API_KEY}`
   //   );
   url = new URL(
-    `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${Keyword}`
+    `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${keyword}`
   );
   userInput.value = "";
   getNews();
