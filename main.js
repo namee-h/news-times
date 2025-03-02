@@ -70,6 +70,7 @@ const getNewsByCategory = async (e) => {
   url = new URL(
     `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}`
   );
+  page = 1;
   closeMenu();
   getNews();
 };
